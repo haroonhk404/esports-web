@@ -1,0 +1,893 @@
+/* ==========================================================
+   REGISTRATION PAGE STYLES
+   ========================================================== */
+
+/* ===== PAGE BANNER ===== */
+.page-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 450px;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.page-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  filter: brightness(0.4) contrast(1.2) saturate(0.85);
+}
+
+.page-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(10,10,10,0.7) 0%, rgba(10,10,10,0.5) 30%, var(--pubg-dark) 100%),
+    linear-gradient(90deg, rgba(10,10,10,0.85) 0%, transparent 60%, rgba(10,10,10,0.6) 100%),
+    radial-gradient(ellipse at top right, rgba(200,16,46,0.15), transparent 50%);
+  pointer-events: none;
+}
+
+.page-banner-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(242,169,0,0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+  -webkit-mask-image: linear-gradient(180deg, black 0%, transparent 100%);
+          mask-image: linear-gradient(180deg, black 0%, transparent 100%);
+}
+
+/* ===== PAGE HEADER ===== */
+.page-header {
+  position: relative;
+  z-index: 2;
+  padding: 130px 40px 40px;
+  min-height: 360px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.page-header-content {
+  max-width: 900px;
+}
+
+.page-title {
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  font-size: clamp(56px, 8vw, 96px);
+  line-height: .9;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  text-shadow: 4px 4px 0 rgba(0,0,0,0.6);
+}
+
+.page-title span {
+  color: var(--pubg-orange);
+  text-shadow: 4px 4px 0 rgba(0,0,0,0.6), 0 0 30px rgba(242,169,0,0.4);
+}
+
+.page-sub {
+  color: var(--text-mid);
+  font-size: 17px;
+  max-width: 620px;
+  line-height: 1.5;
+  font-weight: 300;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+}
+
+/* ===== STEPS BAR ===== */
+.steps-bar {
+  position: relative;
+  z-index: 2;
+  padding: 0 40px 40px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: rgba(10, 10, 10, 0.85);
+  border: 1px solid var(--border);
+  -webkit-backdrop-filter: blur(12px);
+          backdrop-filter: blur(12px);
+  transition: all .3s;
+  flex: 0 0 auto;
+}
+
+.step.active {
+  border-color: var(--pubg-orange);
+  background: rgba(242, 169, 0, 0.1);
+  box-shadow: 0 0 25px rgba(242, 169, 0, 0.2);
+}
+
+.step.done {
+  border-color: #00d26a;
+  background: rgba(0, 210, 106, 0.08);
+}
+
+.step-num {
+  width: 38px;
+  height: 38px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text-dim);
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  transition: all .3s;
+}
+
+.step.active .step-num {
+  background: var(--pubg-orange);
+  color: #000;
+  border-color: var(--pubg-orange);
+}
+
+.step.done .step-num {
+  background: #00d26a;
+  color: #000;
+  border-color: #00d26a;
+}
+
+.step-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+}
+
+.step-name {
+  font-family: 'Teko', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.step-line {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, var(--border) 0%, var(--border) 50%, transparent 100%);
+  margin: 0 -1px;
+  min-width: 30px;
+}
+
+/* ===== REGISTRATION SECTION ===== */
+.reg-section {
+  position: relative;
+  z-index: 2;
+  padding: 30px 40px 70px;
+}
+
+.reg-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 20px;
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Common headers */
+.reg-info-header,
+.reg-form-header {
+  margin-bottom: 22px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.ri-tag {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  color: var(--pubg-orange);
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+
+.ri-tag.red {
+  color: var(--pubg-red);
+}
+
+.reg-info-header h2,
+.reg-form-header h2 {
+  font-family: 'Teko', sans-serif;
+  font-size: 32px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.reg-form-sub {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+  margin-top: 8px;
+}
+
+/* ===== LEFT: MISSION BRIEFING ===== */
+.reg-info {
+  background: rgba(15, 15, 15, 0.85);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--pubg-orange);
+  padding: 30px;
+  -webkit-backdrop-filter: blur(14px);
+          backdrop-filter: blur(14px);
+  position: sticky;
+  top: 90px;
+}
+
+.reg-info ul {
+  list-style: none;
+  margin-bottom: 24px;
+}
+
+.reg-info li {
+  padding: 11px 0;
+  border-bottom: 1px dashed rgba(242, 169, 0, 0.12);
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px;
+}
+
+.reg-info li:last-child {
+  border: none;
+}
+
+.reg-info li span:first-child {
+  color: var(--text-dim);
+  font-weight: 300;
+}
+
+.reg-info li span:last-child {
+  color: var(--pubg-orange);
+  font-family: 'Teko', sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.warning-box {
+  background: rgba(200, 16, 46, 0.08);
+  border-left: 3px solid var(--pubg-red);
+  padding: 14px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.warn-icon {
+  font-size: 22px;
+  color: var(--pubg-red);
+  flex-shrink: 0;
+}
+
+.warn-text {
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.warn-text strong {
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  color: var(--pubg-red);
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+/* ===== RIGHT: REGISTRATION FORM ===== */
+.reg-form {
+  background: rgba(15, 15, 15, 0.85);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--pubg-red);
+  padding: 30px;
+  -webkit-backdrop-filter: blur(14px);
+          backdrop-filter: blur(14px);
+}
+
+.form-row {
+  margin-bottom: 16px;
+}
+
+.form-row.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.form-row label {
+  display: block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.form-row input {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 11px 14px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  transition: all .2s;
+}
+
+.form-row input:focus {
+  outline: none;
+  border-color: var(--pubg-orange);
+  background: rgba(242, 169, 0, 0.05);
+  box-shadow: 0 0 0 3px rgba(242, 169, 0, 0.08);
+}
+
+/* Roster header */
+.roster-header {
+  margin: 20px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed var(--border);
+}
+
+.roster-header span {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.roster-header span::before {
+  content: '▸ ';
+  color: var(--pubg-orange);
+}
+
+/* Players grid */
+.players-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.player-slot {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: border-color .2s;
+}
+
+.player-slot:focus-within {
+  border-color: var(--pubg-orange);
+}
+
+.player-num {
+  width: 30px;
+  height: 30px;
+  background: var(--pubg-orange);
+  display: grid;
+  place-items: center;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  color: #000;
+  font-size: 15px;
+  flex-shrink: 0;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+}
+
+.player-fields {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.player-slot input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.player-slot input.player-id {
+  font-size: 11px;
+  font-family: 'Share Tech Mono', monospace;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+}
+
+.player-slot input:focus {
+  outline: none;
+}
+
+.player-slot input::placeholder {
+  color: var(--text-dim);
+  font-style: italic;
+  opacity: 0.6;
+}
+
+/* Terms */
+.terms {
+  margin: 18px 0;
+}
+
+.terms-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.terms-check input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--pubg-orange);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.terms-check span {
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+/* Fee Box */
+.fee-box {
+  background: linear-gradient(135deg, rgba(242, 169, 0, 0.12), rgba(200, 16, 46, 0.05));
+  border: 1px solid var(--border-strong);
+  border-left: 4px solid var(--pubg-orange);
+  padding: 18px 22px;
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fee-l {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.fee-meta {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+}
+
+.fee-v {
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  color: var(--pubg-orange);
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(242, 169, 0, 0.3);
+}
+
+.fee-v small {
+  font-size: 14px;
+  color: var(--text-dim);
+  margin-left: 6px;
+}
+
+/* MetaMask Button */
+.metamask-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #f6851b, #e2761b);
+  color: #fff;
+  padding: 18px;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 2px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%);
+  padding-right: 36px;
+  transition: all .2s;
+  text-transform: uppercase;
+  box-shadow: 0 8px 30px rgba(246, 133, 27, 0.3);
+}
+
+.metamask-btn:hover {
+  transform: translateX(4px);
+  box-shadow: 0 8px 40px rgba(246, 133, 27, 0.5);
+}
+
+.metamask-btn:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.mm-fox {
+  font-size: 28px;
+}
+
+/* Transaction Info */
+.tx-info {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tx-info div {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+}
+
+/* ===== SUCCESS MODAL ===== */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal.open {
+  display: flex;
+  animation: fadeIn .25s;
+}
+
+.modal-box {
+  background: #0a0a0a;
+  border: 1px solid var(--pubg-orange);
+  border-top: 4px solid var(--pubg-orange);
+  padding: 40px;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+.modal-box::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 40px;
+  height: 40px;
+  border-top: 3px solid var(--pubg-orange);
+  border-right: 3px solid var(--pubg-orange);
+}
+
+.modal-box::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: -1px;
+  width: 40px;
+  height: 40px;
+  border-bottom: 3px solid var(--pubg-orange);
+  border-left: 3px solid var(--pubg-orange);
+}
+
+.modal-icon {
+  font-size: 60px;
+  margin-bottom: 14px;
+  filter: drop-shadow(0 0 25px var(--pubg-orange));
+}
+
+.modal-box h3 {
+  font-family: 'Teko', sans-serif;
+  font-size: 38px;
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--pubg-orange);
+}
+
+.modal-sub {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.modal-box p {
+  color: var(--text-mid);
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+.tx-hash {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px dashed var(--border-strong);
+  padding: 12px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  color: var(--pubg-orange);
+  word-break: break-all;
+  margin-bottom: 24px;
+  letter-spacing: 1px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1000px) {
+  .page-header {
+    padding: 110px 16px 30px;
+    min-height: 300px;
+  }
+  
+  .steps-bar {
+    padding: 0 16px 30px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  
+  .step-line {
+    width: 2px;
+    height: 20px;
+    min-width: 2px;
+    margin: 0 auto;
+    background: var(--border);
+  }
+  
+  .reg-section {
+    padding: 20px 16px 50px;
+  }
+  
+  .reg-wrap {
+    grid-template-columns: 1fr;
+  }
+  
+  .reg-info {
+    position: relative;
+    top: 0;
+  }
+  
+  .players-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-row.two {
+    grid-template-columns: 1fr;
+  }
+  
+  .fee-v {
+    font-size: 28px;
+  }
+  
+  .metamask-btn {
+    font-size: 18px;
+  }
+}
+
+/* ==========================================================
+   NFT SQUAD PASS CARD (Inside Success Modal)
+   ========================================================== */
+.nft-card {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto 24px;
+  background:
+    linear-gradient(135deg, rgba(242, 169, 0, 0.15), rgba(200, 16, 46, 0.1)),
+    linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+  border: 2px solid var(--pubg-orange);
+  position: relative;
+  box-shadow: 
+    0 0 40px rgba(242, 169, 0, 0.3),
+    inset 0 0 20px rgba(242, 169, 0, 0.05);
+  animation: nftReveal .6s cubic-bezier(.2, .7, .3, 1.2);
+}
+
+@keyframes nftReveal {
+  0% { opacity: 0; transform: scale(0.85) rotateY(-15deg); }
+  100% { opacity: 1; transform: scale(1) rotateY(0); }
+}
+
+/* Holographic shine effect */
+.nft-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 60%,
+    transparent 100%
+  );
+  background-size: 200% 200%;
+  animation: shine 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shine {
+  0%, 100% { background-position: -100% -100%; }
+  50% { background-position: 200% 200%; }
+}
+
+/* Corner brackets */
+.nft-card::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 24px;
+  height: 24px;
+  border-top: 3px solid var(--pubg-orange);
+  border-right: 3px solid var(--pubg-orange);
+}
+
+/* Card Header */
+.nft-card-header {
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(242, 169, 0, 0.3);
+  position: relative;
+  z-index: 2;
+}
+
+.nft-badge {
+  background: var(--pubg-orange);
+  color: #000;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 2px;
+  padding: 3px 10px;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+}
+
+.nft-id {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  color: var(--pubg-orange);
+  letter-spacing: 1.5px;
+}
+
+/* Card Body */
+.nft-card-body {
+  padding: 24px 20px 18px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.nft-medal {
+  font-size: 56px;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 0 20px rgba(242, 169, 0, 0.6));
+  animation: medalFloat 3s ease-in-out infinite;
+}
+
+@keyframes medalFloat {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-4px) rotate(-3deg); }
+}
+
+.nft-title {
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 4px;
+  color: var(--pubg-orange);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.nft-squad-name {
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--text);
+  letter-spacing: 1px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(242, 169, 0, 0.4);
+  margin-bottom: 14px;
+  word-break: break-word;
+}
+
+.nft-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--pubg-orange), transparent);
+  margin: 12px 0 14px;
+}
+
+.nft-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  text-align: left;
+}
+
+.nft-meta-grid > div {
+  background: rgba(0, 0, 0, 0.4);
+  border-left: 2px solid var(--pubg-orange);
+  padding: 6px 10px;
+}
+
+.nft-meta-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px;
+  color: var(--text-dim);
+  letter-spacing: 1.5px;
+  margin-bottom: 2px;
+}
+
+.nft-meta-value {
+  font-family: 'Teko', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--pubg-orange);
+  letter-spacing: 1px;
+}
+
+/* Card Footer */
+.nft-card-footer {
+  padding: 10px 16px;
+  border-top: 1px solid rgba(242, 169, 0, 0.3);
+  background: rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 2;
+}
+
+.nft-wallet {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  color: var(--text-mid);
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.nft-wallet::before {
+  content: '▸ OWNER: ';
+  color: var(--pubg-orange);
+}

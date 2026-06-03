@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maps — AU PUBG Tournament</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&family=Barlow+Condensed:wght@300;400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="maps.css">
+  
+  <!-- Shared wallet + chatbot logic -->
+  <script src="wallet.js" defer></script>
+  <script src="chatbot.js" defer></script>
+</head>
+<body>
+
+  <!-- ===== PAGE BANNER ===== -->
+  <div class="page-banner">
+    <img src="images/2.png" alt="PUBG Battleground Vehicles" />
+    <div class="page-banner-overlay"></div>
+  </div>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav>
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 50 50" fill="none">
+          <circle cx="25" cy="25" r="22" stroke="#f2a900" stroke-width="2"/>
+          <circle cx="25" cy="25" r="14" stroke="#f2a900" stroke-width="1.5"/>
+          <circle cx="25" cy="25" r="3" fill="#c8102e"/>
+          <line x1="25" y1="0" x2="25" y2="14" stroke="#f2a900" stroke-width="2"/>
+          <line x1="25" y1="36" x2="25" y2="50" stroke="#f2a900" stroke-width="2"/>
+          <line x1="0" y1="25" x2="14" y2="25" stroke="#f2a900" stroke-width="2"/>
+          <line x1="36" y1="25" x2="50" y2="25" stroke="#f2a900" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <span class="l1">AU PUBG</span>
+        <span class="l2">CHAMPIONSHIP SERIES</span>
+      </div>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Battleground</a></li>
+      <li><a href="leaderboard.html">Standings</a></li>
+      <li><a href="maps.html" class="active">Maps</a></li>
+      <li><a href="register.html">Enlist</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <button class="wallet-btn" id="walletBtn">
+      <span class="dot"></span>
+      <span id="walletText">CONNECT WALLET</span>
+    </button>
+  </nav>
+
+  <!-- ===== PAGE HEADER ===== -->
+  <section class="page-header">
+    <div class="page-header-content">
+      <div class="tag">
+        <span class="live"></span>
+        3 BATTLEGROUNDS // 12 MATCHES
+      </div>
+      <h1 class="page-title">The <span>Maps</span></h1>
+      <p class="page-sub">Three iconic PUBG battlegrounds. Each map tests different skills — close-quarter combat, long-range sniping, vehicle warfare. Master all three. Survive the circle.</p>
+    </div>
+  </section>
+
+  <!-- ===== MATCH ROTATION INFO ===== -->
+  <section class="rotation-info">
+    <div class="rot-row">
+      <div class="rot-step">
+        <div class="rot-num">01</div>
+        <div class="rot-text">
+          <div class="rot-label">ROUNDS 1-4</div>
+          <div class="rot-name">ERANGEL</div>
+        </div>
+      </div>
+      <div class="rot-arrow">→</div>
+      <div class="rot-step">
+        <div class="rot-num">02</div>
+        <div class="rot-text">
+          <div class="rot-label">ROUNDS 5-8</div>
+          <div class="rot-name">MIRAMAR</div>
+        </div>
+      </div>
+      <div class="rot-arrow">→</div>
+      <div class="rot-step">
+        <div class="rot-num">03</div>
+        <div class="rot-text">
+          <div class="rot-label">ROUNDS 9-12</div>
+          <div class="rot-name">SANHOK</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MAPS LIST ===== -->
+  <section class="maps-section">
+
+    <!-- ERANGEL -->
+    <div class="map-block erangel-bg">
+      <img src="images/EE.png" alt="Erangel Map" class="map-bg-img" onerror="this.style.display='none'"/>
+      <div class="map-overlay"></div>
+      <div class="map-content">
+        <div class="map-meta">
+          <div class="map-tag">MAP 01 // CLASSIC</div>
+          <div class="map-status active">● ACTIVE</div>
+        </div>
+        <h2 class="map-title">ERANGEL</h2>
+        <p class="map-desc">The original battleground. A post-Soviet island with sprawling fields, abandoned cities, and dense forests. The classic PUBG experience — versatile, balanced, and deadly.</p>
+        
+        <div class="map-stats">
+          <div class="ms-item">
+            <div class="ms-label">SIZE</div>
+            <div class="ms-value">8×8 KM</div>
+          </div>
+          <div class="ms-item">
+            <div class="ms-label">PLAYERS</div>
+            <div class="ms-value">64</div>
+          </div>
+          <div class="ms-item">
+            <div class="ms-label">MATCHES</div>
+            <div class="ms-value">04</div>
+          </div>
+          <div class="ms-item">
+            <div class="ms-label">DURATION</div>
+            <div class="ms-value">30 MIN</div>
+          </div>
+        </div>
+
+        <div class="map-features">
+          <span class="map-feat">🌾 Open Fields</span>
+          <span class="map-feat">🏚️ Urban Combat</span>
+          <span class="map-feat">🌲 Forest Cover</span>
+          <span class="map-feat">🚗 Vehicle Warfare</span>
+        </div>
+
+        <div class="hot-drops">
+          <div class="hd-label">▸ HOT DROPS</div>
+          <div class="hd-list">
+            <span>Pochinki</span>
+            <span>School</span>
+            <span>Military Base</span>
+            <span>Georgopol</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MIRAMAR -->
+    <div class="map-block miramar-bg">
+      <img src="images/MM.png" alt="Miramar Map" class="map-bg-img" onerror="this.style.display='none'"/>
+      <div class="map-overlay"></div>
+      <div class="map-content">
+        <div class="map-meta">
+          <div class="map-tag">MAP 02 // DESERT</div>
+          <div class="map-status upcoming">◌ UPCOMING</div>
+        </div>
+        <h2 class="map-title">MIRAMAR</h2>
+        <p class="map-desc">The arid Mexican desert. Long sightlines, sparse cover, and unforgiving terrain. Snipers thrive here. Vehicles are essential. Open spaces punish the unprepared.</p>
+        
+        <div class="map-stats">
+          <div class="ms-item">
+            <div class="ms-label">SIZE</div>
+            <div class="ms-value">8×8 KM</div>
+          </div>
+          <div class="ms-item">
+            <div class="ms-label">PLAYERS</div>
+            <div class="ms-value">64</div>
+          </div>
+          <div class="ms-item">
+            <div class="ms-label">MATCHES</div>
+            <div class="ms-value">04</div>
+          </div>
+          <div class="ms-item">
+            <div class="ms-label">DURATION</div>
+            <div class="ms-value">30 MIN</div>
+          </div>
+        </div>
+
+        <div class="map-features">
+          <span class="map-feat">🏜️ Desert Terrain</span>
+          <span class="map-feat">🎯 Long-Range</span>
+          <span class="map-feat">🚙 Off-Road</span>
+          <span class="map-feat">⛰️ Hill Combat</span>
+        </div>
+
+        <div class="hot-drops">
+          <div class="hd-label">▸ HOT DROPS</div>
+          <div class="hd-list">
+            <span>Pecado</span>
+            <span>Hacienda del Patrón</span>
+            <span>Los Leones</span>
+            <span>San Martín</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SANHOK -->
+    <div class="map-block sanhok-bg">
+      <img src="images/SS.png" alt="Sanhok Map" class="map-bg-img" onerror="this.style.display='none'"/>
+      <div class="map-overlay"></div>
+      <div class="map-content">
+        <div class="map-meta">
+          <div class="map-tag">MAP 03 // JUNGLE</div>
+          <div class="map-status upcoming">◌ UPCOMING</div>
+        </div>
+        <h2 class="map-title">SANHOK</h2>
+        <p class="map-desc">A dense tropical island. Smaller, faster, more aggressive. Constant engagements. The circle closes quickly here — no time to camp, no time to hide. Pure chaos.</p>
+        
+        <div class="map-stats">
+          <div class="ms-item">
+            <div class="ms-label">SIZE</div>
+            <div class="ms-value">4×4 KM</div>
+          </div>
+          <div class="ms-item">
+            <div class="ms-label">PLAYERS</div>
+            <div class="ms-value">64</div>
+          </div>
+          <div class="ms-item">
+            <div class="ms-label">MATCHES</div>
+            <div class="ms-value">04</div>
+          </div>
+          <div class="ms-item">
+            <div class="ms-label">DURATION</div>
+            <div class="ms-value">22 MIN</div>
+          </div>
+        </div>
+
+        <div class="map-features">
+          <span class="map-feat">🌴 Dense Jungle</span>
+          <span class="map-feat">⚡ Fast Pace</span>
+          <span class="map-feat">🏘️ Tight Quarters</span>
+          <span class="map-feat">🛶 River Combat</span>
+        </div>
+
+        <div class="hot-drops">
+          <div class="hd-label">▸ HOT DROPS</div>
+          <div class="hd-list">
+            <span>Paradise Resort</span>
+            <span>Bootcamp</span>
+            <span>Ruins</span>
+            <span>Camp Bravo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ===== SCORING SECTION ===== -->
+  <section class="scoring-section">
+    <div class="sec-head">
+      <div>
+        <div class="sec-tag">SCORING SYSTEM</div>
+        <h2 class="sec-title">How Points <span>Work</span></h2>
+      </div>
+    </div>
+
+    <div class="scoring-grid">
+      <div class="score-card">
+        <div class="score-icon">💀</div>
+        <div class="score-value">+1</div>
+        <div class="score-title">PER KILL</div>
+        <div class="score-desc">Each elimination adds one point. Knockouts don't count unless confirmed.</div>
+      </div>
+      <div class="score-card highlight">
+        <div class="score-icon">🏆</div>
+        <div class="score-value">+20</div>
+        <div class="score-title">CHICKEN DINNER</div>
+        <div class="score-desc">Win the match. Last squad standing. The big bonus.</div>
+      </div>
+      <div class="score-card">
+        <div class="score-icon">🎯</div>
+        <div class="score-value">+10</div>
+        <div class="score-title">TOP 5 FINISH</div>
+        <div class="score-desc">Survive to final 5 squads. Consistency rewarded.</div>
+      </div>
+      <div class="score-card">
+        <div class="score-icon">⚡</div>
+        <div class="score-value">+5</div>
+        <div class="score-title">TOP 10 FINISH</div>
+        <div class="score-desc">Make it to top half. Better than the rest.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="foot-mark">AU PUBG CHAMPIONSHIP SERIES</div>
+    © 2026 · <a href="#">Rules</a> · <a href="#">Anti-Cheat</a> · <a href="#">Discord</a> · <a href="contact.html">Contact</a>
+    <div class="foot-contract">SMART CONTRACT: 0xAU••••PUBG••••</div>
+  </footer>
+
+  <!-- ===== CHATBOT ===== -->
+  <button class="chatbot-toggle" id="chatToggle">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+    </svg>
+    <span class="badge" id="chatBadge">1</span>
+  </button>
+
+  <div class="chatbot" id="chatbot">
+    <div class="cb-head">
+      <div class="cb-avatar">🎯</div>
+      <div class="cb-info">
+        <h4>AU Assistant</h4>
+        <p>ONLINE · READY</p>
+      </div>
+      <button class="cb-close" id="cbClose">✕</button>
+    </div>
+    <div class="cb-body" id="cbBody">
+      <div class="msg bot">Maps page! 🗺️ Erangel, Miramar, Sanhok — sab classic battlegrounds. Kis map ke baare mein jaanna hai?</div>
+    </div>
+    <div class="cb-suggestions">
+      <button class="suggest-btn" data-q="Erangel">Erangel</button>
+      <button class="suggest-btn" data-q="Miramar">Miramar</button>
+      <button class="suggest-btn" data-q="Sanhok">Sanhok</button>
+    </div>
+    <div class="cb-input">
+      <input type="text" id="cbInput" placeholder="Type your message..."/>
+      <button id="cbSend">→</button>
+    </div>
+  </div>
+
+  <script>
+    // Wallet connection handled by wallet.js (shared across all pages)
+    // Chatbot logic handled by chatbot.js (shared, uses Gemini AI)
+
+    // Reveal animation
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.map-block, .score-card').forEach((el, i) => {
+        el.style.opacity = 0;
+        el.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+          el.style.transition = 'all .5s cubic-bezier(.2,.7,.3,1)';
+          el.style.opacity = 1;
+          el.style.transform = 'translateY(0)';
+        }, 100 + i * 100);
+      });
+    });
+  </script>
+</body>
+</html>

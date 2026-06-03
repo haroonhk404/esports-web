@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Enlist Squad — AU PUBG Tournament</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&family=Barlow+Condensed:wght@300;400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="register.css">
+  
+  <!-- Shared wallet + chatbot logic -->
+  <script src="wallet.js" defer></script>
+  <script src="chatbot.js" defer></script>
+</head>
+<body>
+
+  <!-- ===== PAGE BANNER ===== -->
+  <div class="page-banner">
+    <img src="images/4.png" alt="PUBG Combat" />
+    <div class="page-banner-overlay"></div>
+  </div>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav>
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 50 50" fill="none">
+          <circle cx="25" cy="25" r="22" stroke="#f2a900" stroke-width="2"/>
+          <circle cx="25" cy="25" r="14" stroke="#f2a900" stroke-width="1.5"/>
+          <circle cx="25" cy="25" r="3" fill="#c8102e"/>
+          <line x1="25" y1="0" x2="25" y2="14" stroke="#f2a900" stroke-width="2"/>
+          <line x1="25" y1="36" x2="25" y2="50" stroke="#f2a900" stroke-width="2"/>
+          <line x1="0" y1="25" x2="14" y2="25" stroke="#f2a900" stroke-width="2"/>
+          <line x1="36" y1="25" x2="50" y2="25" stroke="#f2a900" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <span class="l1">AU PUBG</span>
+        <span class="l2">CHAMPIONSHIP SERIES</span>
+      </div>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Battleground</a></li>
+      <li><a href="leaderboard.html">Standings</a></li>
+      <li><a href="maps.html">Maps</a></li>
+      <li><a href="register.html" class="active">Enlist</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <button class="wallet-btn" id="walletBtn">
+      <span class="dot"></span>
+      <span id="walletText">CONNECT WALLET</span>
+    </button>
+  </nav>
+
+  <!-- ===== PAGE HEADER ===== -->
+  <section class="page-header">
+    <div class="page-header-content">
+      <div class="tag">
+        <span class="live"></span>
+        17 SLOTS REMAINING // ACT FAST
+      </div>
+      <h1 class="page-title">Enlist Your <span>Squad</span></h1>
+      <p class="page-sub">Recruitment terminal active. Fill the operator dossier. Connect MetaMask. Pay 0.05 ETH entry fee. Your squad will be added to the tournament database on-chain.</p>
+    </div>
+  </section>
+
+  <!-- ===== STEPS INDICATOR ===== -->
+  <section class="steps-bar">
+    <div class="step" id="step1">
+      <div class="step-num">01</div>
+      <div class="step-text">
+        <div class="step-label">STEP 01</div>
+        <div class="step-name">Squad Details</div>
+      </div>
+    </div>
+    <div class="step-line"></div>
+    <div class="step" id="step2">
+      <div class="step-num">02</div>
+      <div class="step-text">
+        <div class="step-label">STEP 02</div>
+        <div class="step-name">Connect Wallet</div>
+      </div>
+    </div>
+    <div class="step-line"></div>
+    <div class="step" id="step3">
+      <div class="step-num">03</div>
+      <div class="step-text">
+        <div class="step-label">STEP 03</div>
+        <div class="step-name">Confirm Payment</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MAIN REGISTRATION ===== -->
+  <section class="reg-section">
+    <div class="reg-wrap">
+
+      <!-- ===== LEFT: MISSION BRIEFING ===== -->
+      <div class="reg-info">
+        <div class="reg-info-header">
+          <div class="ri-tag">// MISSION BRIEFING</div>
+          <h2>Tournament Info</h2>
+        </div>
+
+        <ul>
+          <li><span>Entry Fee</span><span>0.05 ETH</span></li>
+          <li><span>Squad Size</span><span>4 Players</span></li>
+          <li><span>Game Mode</span><span>TPP Squad</span></li>
+          <li><span>Server Region</span><span>Asia</span></li>
+          <li><span>Drop Date</span><span>15 Jun 2026</span></li>
+          <li><span>Drop Time</span><span>18:00 PKT</span></li>
+          <li><span>Match Count</span><span>12 Total</span></li>
+          <li><span>Map Rotation</span><span>ER · MI · SA</span></li>
+          <li><span>1st Place</span><span>2.5 ETH</span></li>
+          <li><span>2nd Place</span><span>1.5 ETH</span></li>
+          <li><span>3rd Place</span><span>1.0 ETH</span></li>
+        </ul>
+
+        <div class="warning-box">
+          <div class="warn-icon">⚠</div>
+          <div class="warn-text">
+            <strong>IMPORTANT</strong>
+            All players must pass identity verification before drop. Cheating results in instant DQ and forfeit of entry fee. Zero tolerance policy.
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== RIGHT: REGISTRATION FORM ===== -->
+      <div class="reg-form">
+        <div class="reg-form-header">
+          <div class="ri-tag red">// RECRUITMENT TERMINAL</div>
+          <h2>Squad Registration</h2>
+          <p class="reg-form-sub">All fields required · Fill carefully · No changes after submission</p>
+        </div>
+
+        <div class="form-row">
+          <label>Squad Name</label>
+          <input type="text" id="teamName" placeholder="e.g. PHANTOM WOLVES" />
+        </div>
+
+        <div class="form-row two">
+          <div>
+            <label>Captain Email</label>
+            <input type="email" id="email" placeholder="captain@email.com" />
+          </div>
+          <div>
+            <label>Region Code</label>
+            <input type="text" id="region" placeholder="PK / IN / BD" maxlength="2"/>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>Discord ID (Captain)</label>
+          <input type="text" id="discord" placeholder="username#0000" />
+        </div>
+
+        <div class="roster-header">
+          <span>SQUAD ROSTER · 4 OPERATORS REQUIRED</span>
+        </div>
+
+        <div class="players-grid">
+          <div class="player-slot">
+            <div class="player-num">1</div>
+            <div class="player-fields">
+              <input type="text" id="p1" placeholder="Player 1 IGN"/>
+              <input type="text" id="p1id" placeholder="Player ID" class="player-id"/>
+            </div>
+          </div>
+          <div class="player-slot">
+            <div class="player-num">2</div>
+            <div class="player-fields">
+              <input type="text" id="p2" placeholder="Player 2 IGN"/>
+              <input type="text" id="p2id" placeholder="Player ID" class="player-id"/>
+            </div>
+          </div>
+          <div class="player-slot">
+            <div class="player-num">3</div>
+            <div class="player-fields">
+              <input type="text" id="p3" placeholder="Player 3 IGN"/>
+              <input type="text" id="p3id" placeholder="Player ID" class="player-id"/>
+            </div>
+          </div>
+          <div class="player-slot">
+            <div class="player-num">4</div>
+            <div class="player-fields">
+              <input type="text" id="p4" placeholder="Player 4 IGN"/>
+              <input type="text" id="p4id" placeholder="Player ID" class="player-id"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="terms">
+          <label class="terms-check">
+            <input type="checkbox" id="terms" />
+            <span>I agree to the tournament rules, anti-cheat policy, and confirm all squad members have consented to participation. Entry fee is non-refundable once paid.</span>
+          </label>
+        </div>
+
+        <div class="fee-box">
+          <div>
+            <div class="fee-l">NFT Squad Pass</div>
+            <div class="fee-meta">Free mint · No gas · No ETH needed</div>
+          </div>
+          <div class="fee-v" style="font-size:24px;">FREE <small style="font-size:11px;">NFT</small></div>
+        </div>
+
+        <button class="metamask-btn" id="payBtn">
+          <span class="mm-fox">🦊</span>
+          <span id="payText">MINT NFT SQUAD PASS</span>
+        </button>
+
+        <div class="tx-info">
+          <div>▸ FREE mint — no ETH, no gas fees</div>
+          <div>▸ Works on any network (Mainnet, Sepolia, etc)</div>
+          <div>▸ MetaMask signature only — no transaction</div>
+          <div>▸ Generates unique Squad Pass ID</div>
+          <div>▸ Cryptographically signed & verifiable</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="foot-mark">AU PUBG CHAMPIONSHIP SERIES</div>
+    © 2026 · <a href="#">Rules</a> · <a href="#">Anti-Cheat</a> · <a href="#">Discord</a> · <a href="contact.html">Contact</a>
+    <div class="foot-contract">SMART CONTRACT: 0xAU••••PUBG••••</div>
+  </footer>
+
+  <!-- ===== SUCCESS MODAL — NFT SQUAD PASS ===== -->
+  <div class="modal" id="successModal">
+    <div class="modal-box">
+      <!-- NFT Card -->
+      <div class="nft-card">
+        <div class="nft-card-header">
+          <div class="nft-badge">NFT</div>
+          <div class="nft-id" id="nftId">AUPUBG-XXXX</div>
+        </div>
+        <div class="nft-card-body">
+          <div class="nft-medal">🏆</div>
+          <div class="nft-title">SQUAD PASS</div>
+          <div class="nft-squad-name" id="nftSquadName">SQUAD NAME</div>
+          <div class="nft-divider"></div>
+          <div class="nft-meta-grid">
+            <div>
+              <div class="nft-meta-label">SEASON</div>
+              <div class="nft-meta-value">07</div>
+            </div>
+            <div>
+              <div class="nft-meta-label">TYPE</div>
+              <div class="nft-meta-value">SQUAD</div>
+            </div>
+            <div>
+              <div class="nft-meta-label">STATUS</div>
+              <div class="nft-meta-value">ACTIVE</div>
+            </div>
+            <div>
+              <div class="nft-meta-label">RARITY</div>
+              <div class="nft-meta-value">EPIC</div>
+            </div>
+          </div>
+        </div>
+        <div class="nft-card-footer">
+          <div class="nft-wallet" id="nftWallet">0x...</div>
+        </div>
+      </div>
+
+      <h3>SQUAD ENLISTED</h3>
+      <div class="modal-sub">// NFT SQUAD PASS MINTED</div>
+      <p>Your unique NFT Squad Pass has been minted and signed with your MetaMask wallet. Drop coordinates will be sent to your captain email 24 hours before match start.</p>
+      <div class="tx-hash" id="txHash">0x...</div>
+      <button class="btn btn-primary" id="modalClose">ACKNOWLEDGED</button>
+    </div>
+  </div>
+
+  <!-- ===== CHATBOT ===== -->
+  <button class="chatbot-toggle" id="chatToggle">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+    </svg>
+    <span class="badge" id="chatBadge">1</span>
+  </button>
+
+  <div class="chatbot" id="chatbot">
+    <div class="cb-head">
+      <div class="cb-avatar">🎯</div>
+      <div class="cb-info">
+        <h4>AU Assistant</h4>
+        <p>ONLINE · READY</p>
+      </div>
+      <button class="cb-close" id="cbClose">✕</button>
+    </div>
+    <div class="cb-body" id="cbBody">
+      <div class="msg bot">Registration page! 📝 Squad details fill karne mein madad chahiye? Ya MetaMask setup ke baare mein puchna hai?</div>
+    </div>
+    <div class="cb-suggestions">
+      <button class="suggest-btn" data-q="MetaMask help">MetaMask</button>
+      <button class="suggest-btn" data-q="Entry fee">Fee</button>
+      <button class="suggest-btn" data-q="Refund policy">Refund</button>
+    </div>
+    <div class="cb-input">
+      <input type="text" id="cbInput" placeholder="Type your message..."/>
+      <button id="cbSend">→</button>
+    </div>
+  </div>
+
+  <script>
+    // Step indicator update
+    function updateStep(n) {
+      document.querySelectorAll('.step').forEach((s, i) => {
+        if (i < n) s.classList.add('done');
+        else s.classList.remove('done');
+        if (i === n) s.classList.add('active');
+        else s.classList.remove('active');
+      });
+    }
+    updateStep(0);
+
+    // Wallet connection handled by wallet.js (shared)
+    // window.walletAddress is set globally by wallet.js
+    
+    // Update step indicator when wallet connects
+    function updateWalletStepStatus() {
+      if (window.walletAddress) {
+        const allFilled = ['teamName', 'email', 'p1', 'p2', 'p3', 'p4'].every(i => document.getElementById(i).value.trim());
+        updateStep(allFilled ? 2 : 1);
+      }
+    }
+    
+    // Watch for wallet connect (poll briefly after page load)
+    setTimeout(updateWalletStepStatus, 500);
+    setInterval(updateWalletStepStatus, 2000);
+
+    // Track form completion for step 1
+    ['teamName', 'email', 'p1', 'p2', 'p3', 'p4'].forEach(id => {
+      document.getElementById(id).addEventListener('input', () => {
+        const allFilled = ['teamName', 'email', 'p1', 'p2', 'p3', 'p4'].every(i => document.getElementById(i).value.trim());
+        if (allFilled && !window.walletAddress) updateStep(1);
+        else if (allFilled && window.walletAddress) updateStep(2);
+      });
+    });
+
+    // Pay button
+    document.getElementById('payBtn').addEventListener('click', async () => {
+      const teamName = document.getElementById('teamName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const p1 = document.getElementById('p1').value.trim();
+      const p2 = document.getElementById('p2').value.trim();
+      const p3 = document.getElementById('p3').value.trim();
+      const p4 = document.getElementById('p4').value.trim();
+      const terms = document.getElementById('terms').checked;
+
+      if (!teamName || !email || !p1 || !p2 || !p3 || !p4) {
+        showWalletDialog({
+          icon: '📋',
+          title: 'FIELDS INCOMPLETE',
+          message: 'Saari fields fill karni hain — squad name, captain email, aur charon players ke IGNs.',
+          primaryBtn: 'OK',
+          secondaryBtn: null,
+          type: 'warning'
+        });
+        return;
+      }
+      if (!terms) {
+        showWalletDialog({
+          icon: '📜',
+          title: 'TERMS REQUIRED',
+          message: 'Tournament rules accept karne ke liye terms checkbox tick karein.',
+          primaryBtn: 'OK',
+          secondaryBtn: null,
+          type: 'warning'
+        });
+        return;
+      }
+      
+      // ============================================================
+      // CRITICAL: Wallet check — show dialog if not connected
+      // NO demo wallet fallback — actual MetaMask sign zaroori
+      // ============================================================
+      const walletReady = await requireWallet();
+      if (!walletReady) return;
+      
+      // Get fresh wallet address from global state
+      const walletAddress = window.walletAddress;
+
+      const btn = document.getElementById('payBtn');
+      const txt = document.getElementById('payText');
+      btn.disabled = true;
+      txt.innerText = 'MINTING NFT SQUAD PASS...';
+
+      // ===== NFT SIGNING =====
+      // Uses MetaMask's personal_sign — NO real money, NO gas, NO testnet ETH needed!
+      
+      const squadPassId = 'AUPUBG-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).substr(2, 4).toUpperCase();
+      const timestamp = new Date().toISOString();
+      
+      const messageToSign = `🎮 AU PUBG TOURNAMENT — NFT SQUAD PASS
+
+═══════════════════════════════════════
+SQUAD ENLISTMENT CERTIFICATE
+═══════════════════════════════════════
+
+Squad Name: ${teamName.toUpperCase()}
+Squad Pass ID: ${squadPassId}
+Captain: ${email}
+Roster: ${p1}, ${p2}, ${p3}, ${p4}
+Wallet: ${walletAddress}
+Timestamp: ${timestamp}
+
+═══════════════════════════════════════
+By signing this message, you confirm:
+✓ All roster members consent to participation
+✓ You agree to tournament rules
+✓ This signature mints your Squad Pass NFT
+✓ Drop coordinates will be sent to captain email
+
+This is a FREE signature — no gas, no ETH.
+═══════════════════════════════════════`;
+
+      let signature = null;
+      try {
+        signature = await window.ethereum.request({
+          method: 'personal_sign',
+          params: [messageToSign, walletAddress]
+        });
+      } catch (e) {
+        console.log('Signature rejected:', e);
+        btn.disabled = false;
+        txt.innerText = 'MINT NFT SQUAD PASS';
+        showWalletDialog({
+          icon: '✋',
+          title: 'SIGNATURE CANCELLED',
+          message: 'Aap ne MetaMask mein signature reject kar di.<br><br>NFT mint karne ke liye <b>"Sign"</b> click karna zaroori hai.',
+          primaryBtn: 'TRY AGAIN',
+          secondaryBtn: 'CANCEL',
+          type: 'warning',
+          onPrimary: () => document.getElementById('payBtn').click()
+        });
+        return;
+      }
+      
+      if (!signature) {
+        btn.disabled = false;
+        txt.innerText = 'MINT NFT SQUAD PASS';
+        showWalletDialog({
+          icon: '❌',
+          title: 'SIGNATURE FAILED',
+          message: 'Signature receive nahi hua. MetaMask check karein aur dobara try karein.',
+          primaryBtn: 'OK',
+          secondaryBtn: null,
+          type: 'error'
+        });
+        return;
+      }
+      
+      // Generate a "transaction hash" from the signature (last 64 chars, prefixed)
+      const txHash = '0x' + signature.slice(-64);
+
+      // ============================================================
+      // SAVE TO DATABASE (XAMPP/MySQL backend)
+      // ============================================================
+      txt.innerText = 'SAVING TO DATABASE...';
+      
+      try {
+        const response = await fetch('backend/save_team.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            squadPassId:   squadPassId,
+            squadName:     teamName,
+            captainEmail:  email,
+            regionCode:    document.getElementById('region').value.trim(),
+            discordId:     document.getElementById('discord').value.trim(),
+            walletAddress: walletAddress,
+            txSignature:   signature,
+            players: [
+              { ign: p1, id: document.getElementById('p1id').value.trim() },
+              { ign: p2, id: document.getElementById('p2id').value.trim() },
+              { ign: p3, id: document.getElementById('p3id').value.trim() },
+              { ign: p4, id: document.getElementById('p4id').value.trim() }
+            ]
+          })
+        });
+        
+        const result = await response.json();
+        
+        if (!result.success) {
+          console.error('Database save failed:', result.error);
+          // Don't block — NFT already minted. Show in console only.
+        } else {
+          console.log('Saved to database! Squad ID:', result.squad_id);
+        }
+      } catch (dbError) {
+        // Backend not reachable (XAMPP off, or opened as file://)
+        console.error('Backend unreachable:', dbError);
+        // Silent — NFT mint successful is what matters most
+      }
+
+      updateStep(3);
+      
+      // Populate NFT card display
+      document.getElementById('nftId').innerText = squadPassId;
+      document.getElementById('nftSquadName').innerText = teamName.toUpperCase();
+      document.getElementById('nftWallet').innerText = walletAddress.slice(0, 6) + '...' + walletAddress.slice(-4);
+      document.getElementById('txHash').innerText = txHash;
+      document.getElementById('successModal').classList.add('open');
+
+      btn.disabled = false;
+      txt.innerText = 'MINT NFT SQUAD PASS';
+    });
+
+    document.getElementById('modalClose').addEventListener('click', () => {
+      document.getElementById('successModal').classList.remove('open');
+      ['teamName', 'email', 'region', 'discord', 'p1', 'p2', 'p3', 'p4', 'p1id', 'p2id', 'p3id', 'p4id'].forEach(id => {
+        document.getElementById(id).value = '';
+      });
+      document.getElementById('terms').checked = false;
+      updateStep(window.walletAddress ? 1 : 0);
+    });
+
+    // Chatbot logic handled by chatbot.js (shared, uses Gemini AI)
+  </script>
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — AU PUBG Tournament</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&family=Barlow+Condensed:wght@300;400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="contact.css">
+  
+  <!-- Shared wallet + chatbot logic -->
+  <script src="wallet.js" defer></script>
+  <script src="chatbot.js" defer></script>
+</head>
+<body>
+
+  <!-- ===== PAGE BANNER ===== -->
+  <div class="page-banner">
+    <img src="images/3.png" alt="PUBG Squad" />
+    <div class="page-banner-overlay"></div>
+  </div>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav>
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 50 50" fill="none">
+          <circle cx="25" cy="25" r="22" stroke="#f2a900" stroke-width="2"/>
+          <circle cx="25" cy="25" r="14" stroke="#f2a900" stroke-width="1.5"/>
+          <circle cx="25" cy="25" r="3" fill="#c8102e"/>
+          <line x1="25" y1="0" x2="25" y2="14" stroke="#f2a900" stroke-width="2"/>
+          <line x1="25" y1="36" x2="25" y2="50" stroke="#f2a900" stroke-width="2"/>
+          <line x1="0" y1="25" x2="14" y2="25" stroke="#f2a900" stroke-width="2"/>
+          <line x1="36" y1="25" x2="50" y2="25" stroke="#f2a900" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <span class="l1">AU PUBG</span>
+        <span class="l2">CHAMPIONSHIP SERIES</span>
+      </div>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Battleground</a></li>
+      <li><a href="leaderboard.html">Standings</a></li>
+      <li><a href="maps.html">Maps</a></li>
+      <li><a href="register.html">Enlist</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+
+    <button class="wallet-btn" id="walletBtn">
+      <span class="dot"></span>
+      <span id="walletText">CONNECT WALLET</span>
+    </button>
+  </nav>
+
+  <!-- ===== PAGE HEADER ===== -->
+  <section class="page-header">
+    <div class="page-header-content">
+      <div class="tag">
+        <span class="live"></span>
+        SUPPORT // 24/7 OPERATIONS
+      </div>
+      <h1 class="page-title">Get In <span>Touch</span></h1>
+      <p class="page-sub">Questions about registration, rules, disputes, or payments? Our operations team is online 24/7. Use Discord for instant response, email for formal queries.</p>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT CHANNELS GRID ===== -->
+  <section class="channels-section">
+    <div class="channels-grid">
+      <a href="#" class="channel discord">
+        <div class="ch-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+          </svg>
+        </div>
+        <div class="ch-content">
+          <div class="ch-tag">PRIMARY CHANNEL</div>
+          <h3>Discord Server</h3>
+          <p>Instant chat with admins, mods, and squads. Live tournament updates, voice channels, dispute resolution.</p>
+          <div class="ch-meta">discord.gg/aupubg</div>
+        </div>
+        <div class="ch-arrow">→</div>
+      </a>
+
+      <a href="mailto:support@aupubg.io" class="channel email">
+        <div class="ch-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="5" width="18" height="14" rx="2"/>
+            <path d="M3 7l9 6 9-6"/>
+          </svg>
+        </div>
+        <div class="ch-content">
+          <div class="ch-tag">FORMAL QUERIES</div>
+          <h3>Email Support</h3>
+          <p>For payment issues, disputes, formal complaints, partnership inquiries. Response within 24 hours.</p>
+          <div class="ch-meta">support@aupubg.io</div>
+        </div>
+        <div class="ch-arrow">→</div>
+      </a>
+
+      <a href="#" class="channel twitter">
+        <div class="ch-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23z"/>
+          </svg>
+        </div>
+        <div class="ch-content">
+          <div class="ch-tag">UPDATES & NEWS</div>
+          <h3>Twitter / X</h3>
+          <p>Tournament announcements, match results, schedule changes, hot drops alerts.</p>
+          <div class="ch-meta">@aupubg_official</div>
+        </div>
+        <div class="ch-arrow">→</div>
+      </a>
+
+      <a href="#" class="channel youtube">
+        <div class="ch-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3L10 15z"/>
+          </svg>
+        </div>
+        <div class="ch-content">
+          <div class="ch-tag">LIVE STREAMS</div>
+          <h3>YouTube Channel</h3>
+          <p>Live match broadcasts, post-match analysis, squad spotlights, highlights reels.</p>
+          <div class="ch-meta">youtube.com/aupubg</div>
+        </div>
+        <div class="ch-arrow">→</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT FORM + TEAM ===== -->
+  <section class="contact-section">
+    <div class="contact-wrap">
+
+      <!-- LEFT: Contact Form -->
+      <div class="contact-form">
+        <div class="cf-header">
+          <div class="ri-tag">// SEND MESSAGE</div>
+          <h2>Drop Us A Line</h2>
+          <p class="cf-sub">Use this form for non-urgent inquiries. For tournament issues, use Discord.</p>
+        </div>
+
+        <div class="form-row">
+          <label>Your Name</label>
+          <input type="text" id="cName" placeholder="Operator name" />
+        </div>
+
+        <div class="form-row two">
+          <div>
+            <label>Email</label>
+            <input type="email" id="cEmail" placeholder="you@email.com" />
+          </div>
+          <div>
+            <label>Squad Name (Optional)</label>
+            <input type="text" id="cSquad" placeholder="Your squad" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>Category</label>
+          <select id="cCategory">
+            <option>Select category...</option>
+            <option>Registration Issue</option>
+            <option>Payment Problem</option>
+            <option>Rule Dispute</option>
+            <option>Anti-Cheat Report</option>
+            <option>Technical Bug</option>
+            <option>Partnership Inquiry</option>
+            <option>General Question</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label>Message</label>
+          <textarea id="cMessage" rows="6" placeholder="Describe your issue in detail..."></textarea>
+        </div>
+
+        <button class="submit-btn" id="submitBtn">
+          <span>TRANSMIT MESSAGE</span>
+        </button>
+      </div>
+
+      <!-- RIGHT: Team / Operations -->
+      <div class="contact-aside">
+        
+        <!-- Operations -->
+        <div class="aside-card">
+          <div class="ri-tag">// OPERATIONS</div>
+          <h3>HQ Details</h3>
+          <div class="info-list">
+            <div class="info-item">
+              <div class="info-label">REGION</div>
+              <div class="info-value">South Asia · Pakistan</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">TIMEZONE</div>
+              <div class="info-value">UTC +5 (PKT)</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">RESPONSE TIME</div>
+              <div class="info-value">&lt; 24 hours</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">SUPPORT HOURS</div>
+              <div class="info-value">24/7 via Discord</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team -->
+        <div class="aside-card">
+          <div class="ri-tag">// CORE TEAM</div>
+          <h3>Tournament Staff</h3>
+          <div class="team-list">
+            <div class="staff-item">
+              <div class="staff-avatar">SX</div>
+              <div class="staff-info">
+                <div class="staff-name">ShadowX</div>
+                <div class="staff-role">Tournament Director</div>
+              </div>
+            </div>
+            <div class="staff-item">
+              <div class="staff-avatar">VP</div>
+              <div class="staff-info">
+                <div class="staff-name">Viper</div>
+                <div class="staff-role">Head Admin · Anti-Cheat</div>
+              </div>
+            </div>
+            <div class="staff-item">
+              <div class="staff-avatar">RV</div>
+              <div class="staff-info">
+                <div class="staff-name">Raven</div>
+                <div class="staff-role">Match Coordinator</div>
+              </div>
+            </div>
+            <div class="staff-item">
+              <div class="staff-avatar">BZ</div>
+              <div class="staff-info">
+                <div class="staff-name">Blaze</div>
+                <div class="staff-role">Payments · Smart Contract</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Quick -->
+        <div class="aside-card">
+          <div class="ri-tag">// FAQ</div>
+          <h3>Quick Answers</h3>
+          <details class="faq-item">
+            <summary>How do I withdraw winnings?</summary>
+            <p>Winnings are auto-distributed to your registered MetaMask wallet within 1 hour of finals. No withdrawal request needed.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can I substitute a player mid-tournament?</summary>
+            <p>No mid-circuit substitutions allowed. Roster is locked once registration is confirmed on-chain.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What if my squad disbands?</summary>
+            <p>Squad disbandment forfeits entry fee. Remaining members can register with new squad in a future season.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Is there a backup match server?</summary>
+            <p>Yes. Asia secondary server activates automatically if primary fails. No matches re-played due to server issues.</p>
+          </details>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="foot-mark">AU PUBG CHAMPIONSHIP SERIES</div>
+    © 2026 · <a href="#">Rules</a> · <a href="#">Anti-Cheat</a> · <a href="#">Discord</a> · <a href="contact.html">Contact</a>
+    <div class="foot-contract">SMART CONTRACT: 0xAU••••PUBG••••</div>
+  </footer>
+
+  <!-- ===== SUCCESS TOAST ===== -->
+  <div class="toast" id="toast">
+    <div class="toast-icon">✓</div>
+    <div>
+      <strong>MESSAGE TRANSMITTED</strong>
+      <p>Our team will reach out within 24 hours.</p>
+    </div>
+  </div>
+
+  <!-- ===== CHATBOT ===== -->
+  <button class="chatbot-toggle" id="chatToggle">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+    </svg>
+    <span class="badge" id="chatBadge">1</span>
+  </button>
+
+  <div class="chatbot" id="chatbot">
+    <div class="cb-head">
+      <div class="cb-avatar">🎯</div>
+      <div class="cb-info">
+        <h4>AU Assistant</h4>
+        <p>ONLINE · READY</p>
+      </div>
+      <button class="cb-close" id="cbClose">✕</button>
+    </div>
+    <div class="cb-body" id="cbBody">
+      <div class="msg bot">Contact page! 📡 Kya help chahiye? Discord, Email, ya kuch aur?</div>
+    </div>
+    <div class="cb-suggestions">
+      <button class="suggest-btn" data-q="Discord">Discord</button>
+      <button class="suggest-btn" data-q="Response time">Response Time</button>
+      <button class="suggest-btn" data-q="Partnership">Partnership</button>
+    </div>
+    <div class="cb-input">
+      <input type="text" id="cbInput" placeholder="Type your message..."/>
+      <button id="cbSend">→</button>
+    </div>
+  </div>
+
+  <script>
+    // Wallet connection handled by wallet.js (shared across all pages)
+
+    // Submit form
+    document.getElementById('submitBtn').addEventListener('click', async () => {
+      const name = document.getElementById('cName').value.trim();
+      const email = document.getElementById('cEmail').value.trim();
+      const message = document.getElementById('cMessage').value.trim();
+      if (!name || !email || !message) {
+        alert('Please fill in name, email, and message at minimum.');
+        return;
+      }
+
+      // ============================================================
+      // SAVE TO DATABASE (XAMPP/MySQL backend)
+      // ============================================================
+      try {
+        const response = await fetch('backend/save_contact.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            squadName: document.getElementById('cSquad').value.trim(),
+            category: document.getElementById('cCategory').value,
+            message: message
+          })
+        });
+        const result = await response.json();
+        if (!result.success) {
+          console.error('Save failed:', result.error);
+        } else {
+          console.log('Message saved to database!');
+        }
+      } catch (e) {
+        console.log('Backend not connected (demo mode). Error:', e);
+      }
+
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3500);
+      // Clear form
+      ['cName', 'cEmail', 'cSquad', 'cMessage'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('cCategory').selectedIndex = 0;
+    });
+
+    // Chatbot logic handled by chatbot.js (shared, uses Gemini AI)
+
+    // Reveal animation
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.channel, .aside-card').forEach((el, i) => {
+        el.style.opacity = 0;
+        el.style.transform = 'translateY(15px)';
+        setTimeout(() => {
+          el.style.transition = 'all .4s cubic-bezier(.2,.7,.3,1)';
+          el.style.opacity = 1;
+          el.style.transform = 'translateY(0)';
+        }, 80 + i * 80);
+      });
+    });
+  </script>
+</body>
+</html>
