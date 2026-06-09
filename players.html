@@ -182,7 +182,7 @@
       if (sort)   params.set('sort', sort);
 
       try {
-        const res = await fetch('https://aupubg.rf.gd/backend/get_players.php?' + params.toString());
+        const res = await fetch('https://aupubg.rf.gd/https://aupubg.rf.gd/backend/get_players.php?' + params.toString());
         const data = await res.json();
         
         if (data.success) {
@@ -314,4 +314,5 @@
   </script>
 </body>
 </html>
+
 

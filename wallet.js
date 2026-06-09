@@ -282,3 +282,4 @@ if (document.readyState === 'loading') {
   initWallet();
 }
 
+

@@ -178,7 +178,7 @@
 
     async function loadProfile() {
       try {
-        const res = await fetch('https://aupubg.rf.gd/backend/session_check.php', { credentials: 'same-origin' });
+        const res = await fetch('https://aupubg.rf.gd/https://aupubg.rf.gd/backend/session_check.php', { credentials: 'same-origin' });
         const data = await res.json();
 
         if (!data.loggedIn) {
@@ -292,7 +292,7 @@
         };
 
         try {
-          const res = await fetch('https://aupubg.rf.gd/backend/update_profile.php', {
+          const res = await fetch('https://aupubg.rf.gd/https://aupubg.rf.gd/backend/update_profile.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'same-origin',
@@ -317,7 +317,7 @@
       // Logout
       document.getElementById('logoutBtn')?.addEventListener('click', async () => {
         if (!confirm('Are you sure you want to logout?')) return;
-        await fetch('https://aupubg.rf.gd/backend/logout.php', { method: 'POST', credentials: 'same-origin' });
+        await fetch('https://aupubg.rf.gd/https://aupubg.rf.gd/backend/logout.php', { method: 'POST', credentials: 'same-origin' });
         window.location.href = 'index.html';
       });
     });
@@ -327,4 +327,5 @@
   </script>
 </body>
 </html>
+
 

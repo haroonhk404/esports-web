@@ -86,7 +86,7 @@ function initChatbot() {
   // Call backend Gemini API
   async function getAIReply(userMessage) {
     try {
-      const response = await fetch('https://aupubg.rf.gd/backend/chatbot_api.php', {
+      const response = await fetch('https://aupubg.rf.gd/https://aupubg.rf.gd/backend/chatbot_api.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: userMessage })
@@ -148,4 +148,5 @@ if (document.readyState === 'loading') {
 } else {
   initChatbot();
 }
+
 
