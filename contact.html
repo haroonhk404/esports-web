@@ -10,9 +10,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&family=Barlow+Condensed:wght@300;400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="theme.css">
   <link rel="stylesheet" href="contact.css">
-  
-  <!-- Shared wallet + chatbot logic -->
+
+  <!-- Leaflet (FREE map API — no key needed) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <script src="theme.js" defer></script>
   <script src="wallet.js" defer></script>
   <script src="chatbot.js" defer></script>
 </head>
@@ -46,16 +51,22 @@
 
     <ul class="nav-links">
       <li><a href="index.html">Battleground</a></li>
+      <li><a href="players.html">Players</a></li>
+      <li><a href="tournaments.html">Tournaments</a></li>
       <li><a href="leaderboard.html">Standings</a></li>
       <li><a href="maps.html">Maps</a></li>
       <li><a href="register.html">Enlist</a></li>
       <li><a href="contact.html" class="active">Contact</a></li>
     </ul>
 
-    <button class="wallet-btn" id="walletBtn">
-      <span class="dot"></span>
-      <span id="walletText">CONNECT WALLET</span>
-    </button>
+    <div class="nav-actions">
+      <button class="theme-toggle-btn" id="themeToggle" title="Toggle theme">🌙</button>
+      <a href="login.html" class="nav-account-btn" id="navAccountBtn">LOGIN</a>
+      <button class="wallet-btn" id="walletBtn">
+        <span class="dot"></span>
+        <span id="walletText">CONNECT WALLET</span>
+      </button>
+    </div>
   </nav>
 
   <!-- ===== PAGE HEADER ===== -->
@@ -277,6 +288,51 @@
     </div>
   </section>
 
+  <!-- ===== MAP SECTION (Leaflet — Free Map API) ===== -->
+  <section class="map-section">
+    <div class="sec-head">
+      <div>
+        <div class="sec-tag">// LOCATE US</div>
+        <h2 class="sec-title">Tournament <span>Headquarters</span></h2>
+      </div>
+    </div>
+    <div class="map-container">
+      <div id="hqMap"></div>
+      <div class="map-info">
+        <div class="ri-tag">// HQ DETAILS</div>
+        <h3 style="font-family:'Teko',sans-serif;font-size:26px;letter-spacing:2px;margin-bottom:14px;">AU PUBG OFFICE</h3>
+        <div class="map-detail-row">
+          <span class="md-icon">📍</span>
+          <div>
+            <div class="md-label">Address</div>
+            <div class="md-value">Air University, Sector E-9<br/>Islamabad, Pakistan</div>
+          </div>
+        </div>
+        <div class="map-detail-row">
+          <span class="md-icon">📞</span>
+          <div>
+            <div class="md-label">Phone</div>
+            <div class="md-value">+92 51 9262557</div>
+          </div>
+        </div>
+        <div class="map-detail-row">
+          <span class="md-icon">🕐</span>
+          <div>
+            <div class="md-label">Operating Hours</div>
+            <div class="md-value">Mon-Fri: 9:00 AM - 6:00 PK<br/>Sat: 10:00 AM - 2:00 PM</div>
+          </div>
+        </div>
+        <div class="map-detail-row">
+          <span class="md-icon">🌐</span>
+          <div>
+            <div class="md-label">Coordinates</div>
+            <div class="md-value" style="font-family:'Share Tech Mono',monospace;">33.6633° N, 72.9888° E</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== FOOTER ===== -->
   <footer>
     <div class="foot-mark">AU PUBG CHAMPIONSHIP SERIES</div>
@@ -383,6 +439,48 @@
           el.style.transform = 'translateY(0)';
         }, 80 + i * 80);
       });
+
+      // ============================================================
+      // LEAFLET MAP — Tournament HQ Location (Free Map API)
+      // ============================================================
+      if (typeof L !== 'undefined') {
+        // Air University Islamabad coordinates
+        const HQ_LAT = 33.6633;
+        const HQ_LNG = 72.9888;
+        
+        const map = L.map('hqMap', {
+          center: [HQ_LAT, HQ_LNG],
+          zoom: 14,
+          scrollWheelZoom: false
+        });
+
+        // Dark theme tiles for PUBG aesthetic
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+          attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+          maxZoom: 19
+        }).addTo(map);
+
+        // Custom orange marker with PUBG theme
+        const customIcon = L.divIcon({
+          className: 'custom-marker',
+          html: '<div style="background:#f2a900;width:30px;height:30px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:3px solid #000;box-shadow:0 4px 12px rgba(242,169,0,0.6);display:grid;place-items:center;"><span style="transform:rotate(45deg);font-size:14px;">🎯</span></div>',
+          iconSize: [30, 30],
+          iconAnchor: [15, 30]
+        });
+
+        L.marker([HQ_LAT, HQ_LNG], { icon: customIcon })
+          .addTo(map)
+          .bindPopup('<div style="font-family:\'Teko\',sans-serif;font-size:18px;letter-spacing:1px;color:#f2a900;">AU PUBG HQ</div><div style="font-size:12px;color:#333;">Air University, Islamabad</div>')
+          .openPopup();
+
+        // Add a circle around HQ
+        L.circle([HQ_LAT, HQ_LNG], {
+          color: '#f2a900',
+          fillColor: '#f2a900',
+          fillOpacity: 0.1,
+          radius: 800
+        }).addTo(map);
+      }
     });
   </script>
 </body>

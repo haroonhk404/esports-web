@@ -10,9 +10,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&family=Barlow+Condensed:wght@300;400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="theme.css">
   <link rel="stylesheet" href="leaderboard.css">
   
   <!-- Shared wallet + chatbot logic -->
+  <script src="theme.js" defer></script>
   <script src="wallet.js" defer></script>
   <script src="chatbot.js" defer></script>
 </head>
@@ -46,16 +48,22 @@
 
     <ul class="nav-links">
       <li><a href="index.html">Battleground</a></li>
+      <li><a href="players.html">Players</a></li>
+      <li><a href="tournaments.html">Tournaments</a></li>
       <li><a href="leaderboard.html" class="active">Standings</a></li>
       <li><a href="maps.html">Maps</a></li>
       <li><a href="register.html">Enlist</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
 
-    <button class="wallet-btn" id="walletBtn">
-      <span class="dot"></span>
-      <span id="walletText">CONNECT WALLET</span>
-    </button>
+    <div class="nav-actions">
+      <button class="theme-toggle-btn" id="themeToggle" title="Toggle theme">🌙</button>
+      <a href="login.html" class="nav-account-btn" id="navAccountBtn">LOGIN</a>
+      <button class="wallet-btn" id="walletBtn">
+        <span class="dot"></span>
+        <span id="walletText">CONNECT WALLET</span>
+      </button>
+    </div>
   </nav>
 
   <!-- ===== PAGE HEADER ===== -->

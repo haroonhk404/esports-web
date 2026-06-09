@@ -1,0 +1,308 @@
+/* ============================================================
+   THEME.CSS — Light/Dark Theme Variables
+   Default = dark (PUBG aesthetic). Light theme overrides.
+   ============================================================ */
+
+/* ===== DEFAULT (DARK THEME) ===== */
+:root,
+:root[data-theme="dark"] {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #141414;
+  --bg-tertiary: #1a1a1a;
+  --bg-card: rgba(20, 20, 20, 0.7);
+  --bg-overlay: rgba(0, 0, 0, 0.85);
+  
+  --text: #ffffff;
+  --text-mid: #b8b8b8;
+  --text-dim: #6b6b6b;
+  
+  --pubg-orange: #f2a900;
+  --pubg-red: #c8102e;
+  --pubg-gold: #d4a017;
+  
+  --border-color: rgba(242, 169, 0, 0.2);
+  --border-soft: rgba(255, 255, 255, 0.08);
+  
+  --shadow-color: rgba(0, 0, 0, 0.6);
+}
+
+/* ===== LIGHT THEME OVERRIDE ===== */
+:root[data-theme="light"] {
+  --bg-primary: #f5f5f0;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #fafaf5;
+  --bg-card: rgba(255, 255, 255, 0.9);
+  --bg-overlay: rgba(255, 255, 255, 0.92);
+  
+  --text: #1a1a1a;
+  --text-mid: #4a4a4a;
+  --text-dim: #888;
+  
+  --pubg-orange: #d4910a;
+  --pubg-red: #b81528;
+  --pubg-gold: #b8860b;
+  
+  --border-color: rgba(212, 145, 10, 0.35);
+  --border-soft: rgba(0, 0, 0, 0.08);
+  
+  --shadow-color: rgba(0, 0, 0, 0.12);
+}
+
+/* ===== APPLY THEME VARIABLES TO ELEMENTS ===== */
+
+/* Background */
+:root[data-theme="light"] body {
+  background: var(--bg-primary) !important;
+  color: var(--text) !important;
+}
+
+:root[data-theme="light"] body::before {
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(242, 169, 0, 0.06), transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(200, 16, 46, 0.04), transparent 50%) !important;
+}
+
+/* Nav */
+:root[data-theme="light"] nav,
+:root[data-theme="light"] .nav {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-bottom-color: var(--border-color) !important;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+}
+
+:root[data-theme="light"] .nav-links a {
+  color: #2a2a2a !important;
+}
+
+:root[data-theme="light"] .nav-links a:hover,
+:root[data-theme="light"] .nav-links a.active {
+  color: var(--pubg-orange) !important;
+}
+
+:root[data-theme="light"] .brand-name {
+  color: #1a1a1a !important;
+}
+
+/* Buttons */
+:root[data-theme="light"] .btn-ghost,
+:root[data-theme="light"] .auth-card,
+:root[data-theme="light"] .profile-panel,
+:root[data-theme="light"] .profile-header,
+:root[data-theme="light"] .feature,
+:root[data-theme="light"] .lb-row,
+:root[data-theme="light"] .map-block,
+:root[data-theme="light"] .score-card,
+:root[data-theme="light"] .channel,
+:root[data-theme="light"] .aside-card,
+:root[data-theme="light"] .faq-item {
+  background: var(--bg-secondary) !important;
+  color: var(--text) !important;
+  border-color: var(--border-color) !important;
+  box-shadow: 0 4px 20px var(--shadow-color);
+}
+
+:root[data-theme="light"] .auth-field input,
+:root[data-theme="light"] .auth-field select,
+:root[data-theme="light"] input,
+:root[data-theme="light"] select,
+:root[data-theme="light"] textarea {
+  background: #fafaf5 !important;
+  color: #1a1a1a !important;
+  border-color: rgba(0, 0, 0, 0.15) !important;
+}
+
+:root[data-theme="light"] input:focus,
+:root[data-theme="light"] select:focus,
+:root[data-theme="light"] textarea:focus {
+  border-color: var(--pubg-orange) !important;
+  background: #fff !important;
+}
+
+/* Text colors */
+:root[data-theme="light"] h1,
+:root[data-theme="light"] h2,
+:root[data-theme="light"] h3,
+:root[data-theme="light"] h4,
+:root[data-theme="light"] .sec-title,
+:root[data-theme="light"] .team-name,
+:root[data-theme="light"] .map-title,
+:root[data-theme="light"] .feature h3,
+:root[data-theme="light"] p {
+  color: var(--text) !important;
+}
+
+:root[data-theme="light"] .text-mid,
+:root[data-theme="light"] .feature p,
+:root[data-theme="light"] .team-meta,
+:root[data-theme="light"] .map-desc,
+:root[data-theme="light"] .score-desc,
+:root[data-theme="light"] .footer-text {
+  color: var(--text-mid) !important;
+}
+
+/* Hero overlays in light mode */
+:root[data-theme="light"] .hero {
+  background: linear-gradient(180deg, rgba(245, 245, 240, 0.5), var(--bg-primary)) !important;
+}
+
+/* Footer */
+:root[data-theme="light"] .footer {
+  background: var(--bg-secondary) !important;
+  border-top-color: var(--border-color) !important;
+}
+
+:root[data-theme="light"] .footer-text,
+:root[data-theme="light"] .footer-contract {
+  color: var(--text-mid) !important;
+}
+
+/* Chatbot */
+:root[data-theme="light"] .chatbot {
+  background: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+  box-shadow: 0 20px 60px var(--shadow-color);
+}
+
+:root[data-theme="light"] .cb-body {
+  background: var(--bg-tertiary) !important;
+}
+
+:root[data-theme="light"] .msg.bot {
+  background: #f5f5f0 !important;
+  color: var(--text) !important;
+  border-color: var(--border-color) !important;
+}
+
+:root[data-theme="light"] .cb-input input {
+  background: #fff !important;
+  color: var(--text) !important;
+}
+
+/* Trust bar / hero strip */
+:root[data-theme="light"] .hero-strip,
+:root[data-theme="light"] .stats-strip {
+  background: rgba(255, 255, 255, 0.7) !important;
+  border-color: var(--border-color) !important;
+}
+
+:root[data-theme="light"] .hero-strip .label,
+:root[data-theme="light"] .strip-label {
+  color: var(--text-mid) !important;
+}
+
+/* Leaderboard head row */
+:root[data-theme="light"] .lb-row.head {
+  background: rgba(242, 169, 0, 0.12) !important;
+  color: var(--text) !important;
+}
+
+/* Cards backgrounds */
+:root[data-theme="light"] .prize-card,
+:root[data-theme="light"] .feature-card {
+  background: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* ===== SMOOTH TRANSITIONS ===== */
+body,
+.nav,
+.btn-ghost,
+.auth-card,
+.profile-panel,
+.profile-header,
+.feature,
+.lb-row,
+.map-block,
+.chatbot,
+input,
+select,
+textarea {
+  transition: background-color .35s ease, color .25s ease, border-color .25s ease;
+}
+
+/* ===== THEME TOGGLE BUTTON (Nav) ===== */
+.theme-toggle-btn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--pubg-orange);
+  width: 38px;
+  height: 38px;
+  font-size: 18px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: all .2s;
+  border-radius: 4px;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--pubg-orange);
+  color: #000;
+  transform: scale(1.08);
+}
+
+/* ===== ACCOUNT (LOGIN / PROFILE) BUTTON (Nav) ===== */
+.nav-account-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 38px;
+  padding: 0 16px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--pubg-orange);
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all .2s;
+  white-space: nowrap;
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nav-account-btn:hover {
+  background: var(--pubg-orange);
+  color: #000;
+  border-color: var(--pubg-orange);
+}
+
+.nav-account-btn.logged-in {
+  border-color: var(--pubg-orange);
+  background: rgba(242, 169, 0, 0.12);
+}
+
+.nav-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+@media (max-width: 880px) {
+  .nav-account-btn { padding: 0 10px; font-size: 12px; max-width: 120px; }
+}
+
+:root[data-theme="light"] .theme-toggle-btn,
+:root[data-theme="light"] .nav-account-btn {
+  border-color: var(--border-color) !important;
+}
+
+/* ===== NAV FIT — 7 links + theme + account + wallet ===== */
+.nav-links { gap: 26px; }
+nav, .nav { padding-left: 30px; padding-right: 30px; }
+
+@media (max-width: 1200px) {
+  .nav-links { gap: 18px; }
+  .nav-links a { font-size: 16px; letter-spacing: 1px; }
+  .wallet-btn { padding: 9px 16px; }
+}
+@media (max-width: 980px) {
+  .nav-links { gap: 12px; }
+  .nav-links a { font-size: 15px; letter-spacing: .5px; }
+  .logo-text .l2 { display: none; }
+}

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Profile — AU PUBG Tournament</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="auth.css">
+  <script src="theme.js" defer></script>
+  <script src="wallet.js" defer></script>
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">AU</span>
+        <span class="brand-text">
+          <span class="brand-name">AU PUBG</span>
+          <span class="brand-tag">SEASON 7</span>
+        </span>
+      </a>
+      <ul class="nav-links">
+      <li><a href="index.html">Battleground</a></li>
+      <li><a href="players.html">Players</a></li>
+      <li><a href="tournaments.html">Tournaments</a></li>
+      <li><a href="leaderboard.html">Standings</a></li>
+      <li><a href="maps.html">Maps</a></li>
+      <li><a href="register.html">Enlist</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="theme-toggle-btn" id="themeToggle" title="Toggle theme">🌙</button>
+      <a href="login.html" class="nav-account-btn" id="navAccountBtn">LOGIN</a>
+      <button class="wallet-btn" id="walletBtn">
+        <span class="dot"></span>
+        <span id="walletText">CONNECT WALLET</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== PROFILE ===== -->
+  <section class="profile-wrap">
+    
+    <!-- Loading state -->
+    <div id="profileLoading" style="text-align:center;padding:60px;color:var(--text-mid);">
+      <div style="font-family:'Teko',sans-serif;font-size:28px;letter-spacing:2px;">LOADING PROFILE...</div>
+    </div>
+
+    <!-- Profile content (hidden until loaded) -->
+    <div id="profileContent" style="display:none;">
+
+      <!-- Profile header -->
+      <div class="profile-header">
+        <div class="profile-avatar" id="profileAvatar">A</div>
+        <div class="profile-info">
+          <h1 id="piFullName">USER NAME</h1>
+          <div class="pi-username">@<span id="piUsername">username</span> <span id="piRoleBadge" style="margin-left:10px;padding:2px 8px;background:rgba(242,169,0,0.15);border:1px solid var(--pubg-orange);font-size:10px;letter-spacing:1px;">USER</span></div>
+          <div class="pi-meta">
+            <span>📧 <span id="piEmail">email</span></span>
+            <span>🎮 IGN: <span id="piIgn">—</span></span>
+            <span>🌍 <span id="piRegion">PK</span></span>
+            <span>📅 Joined <span id="piJoined">—</span></span>
+          </div>
+        </div>
+        <button id="logoutBtn" style="position:absolute;top:20px;right:20px;background:transparent;border:1px solid #c8102e;color:#ff8aa0;padding:8px 14px;font-family:'Teko',sans-serif;font-size:14px;letter-spacing:2px;cursor:pointer;">LOGOUT</button>
+      </div>
+
+      <!-- Two-column panels -->
+      <div class="profile-grid">
+
+        <!-- LEFT: Profile Info Form -->
+        <div class="profile-panel">
+          <h3>Profile Information</h3>
+          
+          <div class="auth-error" id="updateError"></div>
+          <div class="auth-success" id="updateSuccess"></div>
+
+          <form id="profileForm" class="auth-form">
+            <div class="auth-field">
+              <label>Full Name</label>
+              <input type="text" id="fFullName">
+            </div>
+            <div class="auth-row">
+              <div class="auth-field">
+                <label>IGN</label>
+                <input type="text" id="fIgn">
+              </div>
+              <div class="auth-field">
+                <label>Region</label>
+                <select id="fRegion">
+                  <option value="PK">🇵🇰 Pakistan</option>
+                  <option value="IN">🇮🇳 India</option>
+                  <option value="BD">🇧🇩 Bangladesh</option>
+                  <option value="LK">🇱🇰 Sri Lanka</option>
+                  <option value="NP">🇳🇵 Nepal</option>
+                </select>
+              </div>
+            </div>
+            <div class="auth-field">
+              <label>MetaMask Wallet</label>
+              <input type="text" id="fWallet" placeholder="0x..." readonly style="opacity:0.7;">
+              <small style="color:var(--text-dim);font-size:11px;margin-top:4px;">Connect MetaMask to auto-fill</small>
+            </div>
+            <button type="submit" class="auth-submit">SAVE CHANGES</button>
+          </form>
+        </div>
+
+        <!-- RIGHT: Personalization Panel -->
+        <div class="profile-panel">
+          <h3>Personalization</h3>
+
+          <!-- Theme -->
+          <div class="auth-field">
+            <label>Preferred Theme</label>
+            <div class="theme-toggle-group">
+              <div class="theme-opt" data-theme="dark">🌙 DARK</div>
+              <div class="theme-opt" data-theme="light">☀️ LIGHT</div>
+            </div>
+          </div>
+
+          <!-- Avatar color -->
+          <div class="auth-field" style="margin-top:20px;">
+            <label>Avatar Color</label>
+            <div class="avatar-colors" id="avatarColors">
+              <div class="avatar-color-opt" data-color="#f2a900" style="background:#f2a900;"></div>
+              <div class="avatar-color-opt" data-color="#c8102e" style="background:#c8102e;"></div>
+              <div class="avatar-color-opt" data-color="#00d26a" style="background:#00d26a;"></div>
+              <div class="avatar-color-opt" data-color="#3b82f6" style="background:#3b82f6;"></div>
+              <div class="avatar-color-opt" data-color="#a855f7" style="background:#a855f7;"></div>
+              <div class="avatar-color-opt" data-color="#ec4899" style="background:#ec4899;"></div>
+              <div class="avatar-color-opt" data-color="#06b6d4" style="background:#06b6d4;"></div>
+              <div class="avatar-color-opt" data-color="#f59e0b" style="background:#f59e0b;"></div>
+            </div>
+          </div>
+
+          <!-- Stats Preview -->
+          <h3 style="margin-top:30px;">Account Stats</h3>
+          <div class="profile-stat-row">
+            <span class="label">Account ID</span>
+            <span class="value" id="sId">—</span>
+          </div>
+          <div class="profile-stat-row">
+            <span class="label">Member Since</span>
+            <span class="value" id="sJoined">—</span>
+          </div>
+          <div class="profile-stat-row">
+            <span class="label">Last Login</span>
+            <span class="value" id="sLastLogin">—</span>
+          </div>
+          <div class="profile-stat-row">
+            <span class="label">Role</span>
+            <span class="value" id="sRole">user</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    let currentUser = null;
+    let selectedTheme = 'dark';
+    let selectedAvatarColor = '#f2a900';
+
+    async function loadProfile() {
+      try {
+        const res = await fetch('backend/session_check.php', { credentials: 'same-origin' });
+        const data = await res.json();
+
+        if (!data.loggedIn) {
+          window.location.href = 'login.html?required=1';
+          return;
+        }
+
+        currentUser = data.user;
+        renderProfile(currentUser);
+      } catch (e) {
+        alert('Backend not reachable. Make sure XAMPP is running.');
+        setTimeout(() => window.location.href = 'index.html', 2000);
+      }
+    }
+
+    function renderProfile(u) {
+      document.getElementById('profileLoading').style.display = 'none';
+      document.getElementById('profileContent').style.display = 'block';
+
+      // Header
+      const initial = (u.full_name || u.username || 'A').charAt(0).toUpperCase();
+      const avatar = document.getElementById('profileAvatar');
+      avatar.innerText = initial;
+      avatar.style.background = u.avatar_color || '#f2a900';
+
+      document.getElementById('piFullName').innerText = (u.full_name || u.username || 'USER').toUpperCase();
+      document.getElementById('piUsername').innerText = u.username;
+      document.getElementById('piEmail').innerText = u.email;
+      document.getElementById('piIgn').innerText = u.ign || '—';
+      document.getElementById('piRegion').innerText = u.region || 'PK';
+      document.getElementById('piJoined').innerText = new Date(u.created_at).toLocaleDateString();
+      
+      // Role badge
+      const roleBadge = document.getElementById('piRoleBadge');
+      roleBadge.innerText = (u.role || 'user').toUpperCase();
+      if (u.role === 'admin') {
+        roleBadge.style.background = 'rgba(200, 16, 46, 0.2)';
+        roleBadge.style.borderColor = '#c8102e';
+        roleBadge.style.color = '#ff8aa0';
+      }
+
+      // Form
+      document.getElementById('fFullName').value = u.full_name || '';
+      document.getElementById('fIgn').value = u.ign || '';
+      document.getElementById('fRegion').value = u.region || 'PK';
+      document.getElementById('fWallet').value = u.wallet_address || window.walletAddress || '';
+
+      // Personalization
+      selectedTheme = u.theme_pref || 'dark';
+      selectedAvatarColor = u.avatar_color || '#f2a900';
+      document.querySelectorAll('.theme-opt').forEach(opt => {
+        opt.classList.toggle('active', opt.dataset.theme === selectedTheme);
+      });
+      document.querySelectorAll('.avatar-color-opt').forEach(opt => {
+        opt.classList.toggle('active', opt.dataset.color === selectedAvatarColor);
+      });
+
+      // Stats
+      document.getElementById('sId').innerText = '#' + u.id;
+      document.getElementById('sJoined').innerText = new Date(u.created_at).toLocaleDateString();
+      document.getElementById('sLastLogin').innerText = u.last_login ? new Date(u.last_login).toLocaleString() : 'First login';
+      document.getElementById('sRole').innerText = u.role || 'user';
+    }
+
+    // Theme toggle group
+    document.querySelectorAll('.theme-opt').forEach(opt => {
+      opt.addEventListener('click', () => {
+        selectedTheme = opt.dataset.theme;
+        document.querySelectorAll('.theme-opt').forEach(o => o.classList.remove('active'));
+        opt.classList.add('active');
+        // Apply immediately
+        if (window.applyTheme) window.applyTheme(selectedTheme);
+        localStorage.setItem('aupubg_theme', selectedTheme);
+      });
+    });
+
+    // Avatar color picker
+    document.querySelectorAll('.avatar-color-opt').forEach(opt => {
+      opt.addEventListener('click', () => {
+        selectedAvatarColor = opt.dataset.color;
+        document.querySelectorAll('.avatar-color-opt').forEach(o => o.classList.remove('active'));
+        opt.classList.add('active');
+        document.getElementById('profileAvatar').style.background = selectedAvatarColor;
+      });
+    });
+
+    // Auto-fill wallet when connected
+    setInterval(() => {
+      const walletField = document.getElementById('fWallet');
+      if (walletField && !walletField.value && window.walletAddress) {
+        walletField.value = window.walletAddress;
+      }
+    }, 1500);
+
+    // Profile form submit
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('profileForm')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const err = document.getElementById('updateError');
+        const success = document.getElementById('updateSuccess');
+        err.classList.remove('show');
+        success.classList.remove('show');
+
+        const payload = {
+          fullName: document.getElementById('fFullName').value.trim(),
+          ign: document.getElementById('fIgn').value.trim(),
+          region: document.getElementById('fRegion').value,
+          theme: selectedTheme,
+          avatarColor: selectedAvatarColor,
+          walletAddress: document.getElementById('fWallet').value.trim() || window.walletAddress || ''
+        };
+
+        try {
+          const res = await fetch('backend/update_profile.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'same-origin',
+            body: JSON.stringify(payload)
+          });
+          const data = await res.json();
+
+          if (data.success) {
+            success.innerText = '✓ Profile updated successfully!';
+            success.classList.add('show');
+            setTimeout(() => success.classList.remove('show'), 3000);
+          } else {
+            err.innerText = data.error || 'Update failed';
+            err.classList.add('show');
+          }
+        } catch (ex) {
+          err.innerText = 'Backend error';
+          err.classList.add('show');
+        }
+      });
+
+      // Logout
+      document.getElementById('logoutBtn')?.addEventListener('click', async () => {
+        if (!confirm('Are you sure you want to logout?')) return;
+        await fetch('backend/logout.php', { method: 'POST', credentials: 'same-origin' });
+        window.location.href = 'index.html';
+      });
+    });
+
+    // Init
+    loadProfile();
+  </script>
+</body>
+</html>

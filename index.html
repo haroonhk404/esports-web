@@ -12,8 +12,10 @@
 
   <!-- External Stylesheet -->
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="theme.css">
   
   <!-- Shared wallet + chatbot logic (saari pages use karti hain) -->
+  <script src="theme.js" defer></script>
   <script src="wallet.js" defer></script>
   <script src="chatbot.js" defer></script>
 </head>
@@ -47,16 +49,22 @@
 
     <ul class="nav-links">
       <li><a href="index.html" class="active">Battleground</a></li>
+      <li><a href="players.html">Players</a></li>
+      <li><a href="tournaments.html">Tournaments</a></li>
       <li><a href="leaderboard.html">Standings</a></li>
       <li><a href="maps.html">Maps</a></li>
       <li><a href="register.html">Enlist</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
 
-    <button class="wallet-btn" id="walletBtn">
-      <span class="dot"></span>
-      <span id="walletText">CONNECT WALLET</span>
-    </button>
+    <div class="nav-actions">
+      <button class="theme-toggle-btn" id="themeToggle" title="Toggle theme">🌙</button>
+      <a href="login.html" class="nav-account-btn" id="navAccountBtn">LOGIN</a>
+      <button class="wallet-btn" id="walletBtn">
+        <span class="dot"></span>
+        <span id="walletText">CONNECT WALLET</span>
+      </button>
+    </div>
   </nav>
 
   <!-- ===== HERO SECTION ===== -->

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Players — AU PUBG Tournament</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="players.css">
+  <script src="theme.js" defer></script>
+  <script src="wallet.js" defer></script>
+  <script src="chatbot.js" defer></script>
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">AU</span>
+        <span class="brand-text">
+          <span class="brand-name">AU PUBG</span>
+          <span class="brand-tag">SEASON 7</span>
+        </span>
+      </a>
+      <ul class="nav-links">
+      <li><a href="index.html">Battleground</a></li>
+      <li><a href="players.html" class="active">Players</a></li>
+      <li><a href="tournaments.html">Tournaments</a></li>
+      <li><a href="leaderboard.html">Standings</a></li>
+      <li><a href="maps.html">Maps</a></li>
+      <li><a href="register.html">Enlist</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="theme-toggle-btn" id="themeToggle" title="Toggle theme">🌙</button>
+      <a href="login.html" class="nav-account-btn" id="navAccountBtn">LOGIN</a>
+      <button class="wallet-btn" id="walletBtn">
+        <span class="dot"></span>
+        <span id="walletText">CONNECT WALLET</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== PLAYERS PAGE ===== -->
+  <section class="players-wrap">
+    
+    <div class="players-head">
+      <div class="sec-tag">// FEATURED ROSTER</div>
+      <h1>Tournament Players</h1>
+      <p>The elite competitors enlisted for Season 7. Search by name, filter by role, region, or tier.</p>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="players-filter">
+      <div class="filter-field">
+        <label>🔍 Search</label>
+        <input type="text" id="searchInput" placeholder="IGN, real name, or squad...">
+      </div>
+      <div class="filter-field">
+        <label>Role</label>
+        <select id="roleFilter">
+          <option value="">All Roles</option>
+          <option value="IGL">IGL (Leader)</option>
+          <option value="Assaulter">Assaulter</option>
+          <option value="Sniper">Sniper</option>
+          <option value="Support">Support</option>
+          <option value="Scout">Scout</option>
+        </select>
+      </div>
+      <div class="filter-field">
+        <label>Region</label>
+        <select id="regionFilter">
+          <option value="">All Regions</option>
+          <option value="PK">🇵🇰 Pakistan</option>
+          <option value="IN">🇮🇳 India</option>
+          <option value="BD">🇧🇩 Bangladesh</option>
+          <option value="LK">🇱🇰 Sri Lanka</option>
+          <option value="NP">🇳🇵 Nepal</option>
+        </select>
+      </div>
+      <div class="filter-field">
+        <label>Tier</label>
+        <select id="tierFilter">
+          <option value="">All Tiers</option>
+          <option value="Pro">Pro</option>
+          <option value="Elite">Elite</option>
+          <option value="Veteran">Veteran</option>
+          <option value="Rookie">Rookie</option>
+        </select>
+      </div>
+      <button class="filter-clear" id="clearFilters">CLEAR</button>
+    </div>
+
+    <!-- Results count + Sort -->
+    <div class="results-bar">
+      <div class="results-count"><span id="playerCount">0</span> PLAYERS FOUND</div>
+      <div class="filter-field" style="flex-direction:row;align-items:center;gap:10px;">
+        <label style="margin:0;">Sort by:</label>
+        <select id="sortFilter" style="padding:6px 10px;font-size:12px;">
+          <option value="rating">Rating</option>
+          <option value="kills">Kills</option>
+          <option value="win_rate">Win Rate</option>
+          <option value="kd_ratio">K/D Ratio</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Players Grid -->
+    <div class="players-grid" id="playersGrid">
+      <!-- Cards loaded dynamically -->
+      <div class="players-empty">
+        <div class="icon">⏳</div>
+        <h3>LOADING PLAYERS...</h3>
+        <p>Fetching roster from database</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ===== CHATBOT TOGGLE ===== -->
+  <button class="chatbot-toggle" id="chatToggle">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+    </svg>
+    <span class="badge" id="chatBadge">1</span>
+  </button>
+
+  <div class="chatbot" id="chatbot">
+    <div class="cb-head">
+      <div class="cb-avatar">🎯</div>
+      <div class="cb-info">
+        <h4>AU Assistant</h4>
+        <p><span class="cb-online"></span> Online · Ready</p>
+      </div>
+      <button class="cb-close" id="cbClose">✕</button>
+    </div>
+    <div class="cb-body" id="cbBody">
+      <div class="msg bot">Soldier! 🎯 Tell me which player you want to know about, or ask about roles, tiers, or stats.</div>
+    </div>
+    <div class="cb-suggestions">
+      <button class="suggest-btn" data-q="Who is the top sniper?">Top Sniper</button>
+      <button class="suggest-btn" data-q="What is IGL role?">IGL Role</button>
+      <button class="suggest-btn" data-q="Tier system explained">Tiers</button>
+    </div>
+    <div class="cb-input">
+      <input type="text" id="cbInput" placeholder="Ask about a player...">
+      <button id="cbSend">→</button>
+    </div>
+  </div>
+
+  <script>
+    // ============================================================
+    // PLAYERS PAGE LOGIC
+    // ============================================================
+    let allPlayers = [];
+    let searchTimeout = null;
+
+    async function loadPlayers() {
+      const search = document.getElementById('searchInput').value.trim();
+      const role   = document.getElementById('roleFilter').value;
+      const region = document.getElementById('regionFilter').value;
+      const tier   = document.getElementById('tierFilter').value;
+      const sort   = document.getElementById('sortFilter').value;
+
+      const params = new URLSearchParams();
+      if (search) params.set('search', search);
+      if (role)   params.set('role', role);
+      if (region) params.set('region', region);
+      if (tier)   params.set('tier', tier);
+      if (sort)   params.set('sort', sort);
+
+      try {
+        const res = await fetch('backend/get_players.php?' + params.toString());
+        const data = await res.json();
+        
+        if (data.success) {
+          allPlayers = data.players;
+          renderPlayers(data.players);
+        } else {
+          renderError('Database error');
+        }
+      } catch (e) {
+        // Fallback to dummy data if backend not reachable
+        console.log('Backend not reachable, using demo data');
+        renderDemoData();
+      }
+    }
+
+    function renderPlayers(players) {
+      const grid = document.getElementById('playersGrid');
+      document.getElementById('playerCount').innerText = players.length;
+
+      if (players.length === 0) {
+        grid.innerHTML = `
+          <div class="players-empty">
+            <div class="icon">🔍</div>
+            <h3>NO PLAYERS FOUND</h3>
+            <p>Try adjusting your search or filters</p>
+          </div>`;
+        return;
+      }
+
+      grid.innerHTML = players.map(p => `
+        <div class="player-card">
+          <div class="player-tier tier-${p.tier}">${p.tier}</div>
+          
+          <div class="pc-header">
+            <div class="pc-avatar">${p.avatar || '🎯'}</div>
+            <div class="pc-name">
+              <div class="pc-ign">${escapeHtml(p.ign)}</div>
+              <div class="pc-real">${escapeHtml(p.real_name || '—')}</div>
+            </div>
+          </div>
+
+          <div class="pc-tags">
+            <span class="pc-tag">${p.role}</span>
+            <span class="pc-tag region">${getRegionFlag(p.region)} ${p.region}</span>
+            <span class="pc-tag" style="background:rgba(0,0,0,0.4);color:#fff;border-color:rgba(255,255,255,0.1);">${escapeHtml(p.squad_name)}</span>
+          </div>
+
+          <div class="pc-stats">
+            <div class="pc-stat highlight">
+              <div class="stat-label">Kills</div>
+              <div class="stat-value">${p.kills}</div>
+            </div>
+            <div class="pc-stat">
+              <div class="stat-label">Matches</div>
+              <div class="stat-value">${p.matches}</div>
+            </div>
+            <div class="pc-stat">
+              <div class="stat-label">Win Rate</div>
+              <div class="stat-value">${p.win_rate}%</div>
+            </div>
+            <div class="pc-stat">
+              <div class="stat-label">K/D Ratio</div>
+              <div class="stat-value">${p.kd_ratio}</div>
+            </div>
+          </div>
+
+          <div class="pc-rating">
+            <span class="pc-rating-label">⭐ Rating</span>
+            <span class="pc-rating-value">${p.rating}</span>
+          </div>
+
+          <div class="pc-bio">${escapeHtml(p.bio || '')}</div>
+        </div>
+      `).join('');
+    }
+
+    function renderError(msg) {
+      document.getElementById('playersGrid').innerHTML = `
+        <div class="players-empty">
+          <div class="icon">⚠️</div>
+          <h3>ERROR</h3>
+          <p>${msg}</p>
+        </div>`;
+    }
+
+    function renderDemoData() {
+      // Fallback if backend is down
+      const demo = [
+        {id:1, ign:'SHADOWX', real_name:'Demo Player', squad_name:'PHANTOM WOLVES', role:'IGL', region:'PK', kills:142, matches:24, win_rate:33.33, kd_ratio:5.92, rating:2890, tier:'Pro', bio:'Master strategist. (Demo mode — XAMPP not running)', avatar:'🐺'},
+        {id:2, ign:'VIPER', real_name:'Demo Player', squad_name:'PHANTOM WOLVES', role:'Sniper', region:'PK', kills:128, matches:24, win_rate:33.33, kd_ratio:5.33, rating:2750, tier:'Pro', bio:'Long-range specialist. (Demo mode)', avatar:'🐍'},
+        {id:3, ign:'GHOST', real_name:'Demo Player', squad_name:'GHOST PROTOCOL', role:'Assaulter', region:'IN', kills:119, matches:23, win_rate:30.43, kd_ratio:5.17, rating:2680, tier:'Pro', bio:'Aggressive entry fragger. (Demo mode)', avatar:'👻'},
+      ];
+      allPlayers = demo;
+      renderPlayers(demo);
+    }
+
+    function getRegionFlag(code) {
+      const flags = { PK: '🇵🇰', IN: '🇮🇳', BD: '🇧🇩', LK: '🇱🇰', NP: '🇳🇵' };
+      return flags[code] || '🌍';
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.innerText = text || '';
+      return div.innerHTML;
+    }
+
+    // Event listeners — debounced search
+    document.getElementById('searchInput').addEventListener('input', () => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(loadPlayers, 300);
+    });
+
+    ['roleFilter', 'regionFilter', 'tierFilter', 'sortFilter'].forEach(id => {
+      document.getElementById(id).addEventListener('change', loadPlayers);
+    });
+
+    document.getElementById('clearFilters').addEventListener('click', () => {
+      document.getElementById('searchInput').value = '';
+      document.getElementById('roleFilter').value = '';
+      document.getElementById('regionFilter').value = '';
+      document.getElementById('tierFilter').value = '';
+      document.getElementById('sortFilter').value = 'rating';
+      loadPlayers();
+    });
+
+    // Initial load
+    loadPlayers();
+  </script>
+</body>
+</html>
