@@ -151,7 +151,7 @@
       btnText.innerText = 'CREATING ACCOUNT...';
 
       try {
-        const res = await fetch('backend/signup.php', {
+        const res = await fetch('https://aupubg.rf.gd/backend/signup.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ username, email, password, fullName, ign, region })
@@ -175,3 +175,4 @@
   </script>
 </body>
 </html>
+
