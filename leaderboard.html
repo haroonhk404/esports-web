@@ -405,7 +405,7 @@
 
     async function loadLeaderboard() {
       try {
-        const response = await fetch('https://aupubg.rf.gd/backend/get_leaderboard.php');
+        const response = await fetch('https://aupubg.rf.gd/get_leaderboard.php');
         const result = await response.json();
         
         if (result.success && result.squads.length > 0) {
@@ -456,6 +456,7 @@
   </script>
 </body>
 </html>
+
 
 
 

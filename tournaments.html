@@ -140,7 +140,7 @@
     let currentStatus = '';
 
     async function loadTournaments() {
-      const url = currentStatus ? `https://aupubg.rf.gd/backend/get_tournaments.php?status=${currentStatus}` : 'https://aupubg.rf.gd/backend/get_tournaments.php';
+      const url = currentStatus ? `https://aupubg.rf.gd/get_tournaments.php?status=${currentStatus}` : 'https://aupubg.rf.gd/get_tournaments.php';
       try {
         const res = await fetch(url);
         const data = await res.json();
@@ -232,6 +232,7 @@
   </script>
 </body>
 </html>
+
 
 
 
