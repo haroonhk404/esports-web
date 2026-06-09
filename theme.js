@@ -61,7 +61,7 @@ if (document.readyState === 'loading') {
 
 /* ============================================================
    ACCOUNT NAV — Session-aware Login/Profile button
-   https://aupubg.rf.gd/https://aupubg.rf.gd/backend/session_check.php se current user check karta hai.
+   https://aupubg.rf.gd/backend/session_check.php se current user check karta hai.
    Logged-in  -> button "▣ USERNAME" dikhata hai, profile.html pe le jaata hai
    Logged-out -> button "LOGIN" dikhata hai, login.html pe le jaata hai
    (XAMPP localhost pe kaam karta hai; Netlify static pe gracefully LOGIN reh jaata hai)
@@ -70,7 +70,7 @@ function initAccountNav() {
   const btn = document.getElementById('navAccountBtn');
   if (!btn) return;
 
-  fetch('https://aupubg.rf.gd/https://aupubg.rf.gd/backend/session_check.php', { credentials: 'same-origin' })
+  fetch('https://aupubg.rf.gd/backend/session_check.php', { credentials: 'same-origin' })
     .then(r => r.ok ? r.json() : Promise.reject())
     .then(data => {
       if (data && data.loggedIn && data.user) {
@@ -95,5 +95,6 @@ if (document.readyState === 'loading') {
 } else {
   initAccountNav();
 }
+
 
 
